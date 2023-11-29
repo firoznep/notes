@@ -1,0 +1,38 @@
+hostname PC1
+!
+no ip domain lookup
+!
+interface FastEthernet0/0
+ ip address 10.10.0.10 255.255.255.0
+ no shutdown
+!
+interface FastEthernet0/1
+ no ip address
+ shutdown
+!
+interface FastEthernet1/0
+ no ip address
+ shutdown
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+!
+ip route 0.0.0.0 0.0.0.0 10.10.0.1
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end

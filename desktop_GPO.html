@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop GPO</title>
+  </head>
+  <body>
+    <h1>Desktop GPO</h1>
+    <div>
+      <h3>Create a File Share</h3>
+      <ul>
+        <li>
+          Create a New Folder under Pictures folder (or any drive) inside your
+          server
+        </li>
+        <li>Share the folder by right-clicking it and selecting Properties.</li>
+        <li>
+          Under the Desktop Background Properties Window select the Sharing Tab
+          and click on the Advanced Sharing button.
+        </li>
+        <li>
+          Tick mark the Share this folder checkbox and then click on the
+          Permissions button.
+        </li>
+        <li>
+          By default, Everyone has Read permissions. To be a little bit more
+          secure lets delete the group by highlighting Everyone group and
+          clicking on the Remove button.
+        </li>
+        <li>Now lets click on Add to add the "Authenticated Users".</li>
+
+        <li>
+          Make sure "Authenticated Users" have Read Permissions and click on
+          Apply and OK buttons.
+        </li>
+      </ul>
+
+      <h3>Configure the Group Policy Object</h3>
+      <ul>
+        <li>Open Server Manager > Tools > Group Policy Management.</li>
+        <li>
+          Right-click on "OU" that you want to apply the GPO, and choose to
+          Create a GPO in this domain, and Link it here...
+        </li>
+        <li>
+          Under "new GPO" dialog. Give the name "Desktop Background" and click
+          OK.
+        </li>
+        <li>
+          Right-click on the newly created "Desktop Background" policy and
+          choose "Edit".
+        </li>
+
+        <li>
+          Under User Configuration navigate to Policies > Administrative
+          Templates > Desktop > Desktop. Double click on Desktop Wallpaper to
+          edit the setting.
+        </li>
+        <li>
+          Check "enabled" and give the Wallpaper full
+          path.("\\hostname\username\pictures\mypic.jpg")
+        </li>
+        <li>
+          Open a command prompt and type "gpupdate /force" and "gpresult /r" to
+          see the group policy has been applied.
+        </li>
+        <li>in user pc type "gpupdate" and restart.</li>
+      </ul>
+    </div>
+  </body>
+</html>
